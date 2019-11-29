@@ -15,7 +15,7 @@ class ConvertNotValidCurrentPageToNotFoundListener implements EventSubscriberInt
     public function onException(GetResponseForExceptionEvent $event)
     {
         if ($event->getException() instanceof NotValidCurrentPageException) {
-            $event->setException(new NotFoundHttpException('Page Not Found', $event->getException()));
+            $event->setException(new NotFoundHttpException('Page Not Found', $event->getThrowable()));
         }
     }
 
